@@ -1,9 +1,24 @@
 import React, { Component, Fragment } from 'react';
 
+import data from './data/Data';
+import Question from './components/Question';
+
 import './css/Style.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      questions: data.questions,
+      current: data.questions[0],
+      progress: 0,
+      answers: []
+    }
+  }
+  
   render() {
+    const { current } = this.state;
+
     return (
       <Fragment>
         <header>
@@ -16,20 +31,7 @@ class App extends Component {
             1 of 5 answered
           </div>
 
-          <div className={`question`}>
-            <h1>What is the best city in the world?</h1>
-            <section className="choices">
-              <button className="btn btn-huge">
-                <span className="letter">A</span> Melbourne
-              </button>
-              <button className="btn btn-huge">
-                <span className="letter">B</span> New York
-              </button>
-              <button className="btn btn-huge">
-                <span className="letter">C</span> London
-              </button>
-            </section>
-          </div>
+          <Question current={current} />
 
           <div className="results">
             <h1>Here are your answers:</h1>

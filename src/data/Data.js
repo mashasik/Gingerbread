@@ -1,5 +1,5 @@
 const data = {
-  "allQuestions": [
+  "questions": [
     {
       "_id": "59484d1e70ff45d3f6f920f7",
       "index": 0,

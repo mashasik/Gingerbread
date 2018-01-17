@@ -18,7 +18,7 @@ header {
 }
 
 img {
-    max-width: 120px;
+    width: 130px;
     position: absolute;
     top: auto;
     bottom: 0;
@@ -139,5 +139,11 @@ img {
     100% {
         background-color: darken(#edecf0, 0);
         border-color: lighten(#4b4668, 40);
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .choices {
+        flex-wrap: wrap;
     }
 }
