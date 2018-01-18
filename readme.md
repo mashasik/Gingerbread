@@ -1,6 +1,6 @@
 # React Workshop
 
-Простой опрос
+Простой тест
 
 ## Getting started
 1. Run `npm install` to install the necessary dependencies
