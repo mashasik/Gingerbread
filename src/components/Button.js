@@ -6,11 +6,21 @@ class Button extends Component {
     return letters[index]
   }
 
+  handleClick(e) {
+    this.button.classList.add('is-selected', 'is-highlighted');
+
+    setTimeout((e) => {
+      this.props.onSelect(this.props.choice);
+    }, 500)
+  }
+
   render() {
-    const { choice, index } = this.props;
+    const { choice, index, onSelect } = this.props;
 
     return (
-      <button className="btn btn-huge">
+      <button className="btn btn-huge"
+        ref={(input) => this.button = input}
+        onClick={(e) => this.handleClick(e)} >
         <span className="letter">{this.getLetter(index)}</span> {choice}
       </button>
     );

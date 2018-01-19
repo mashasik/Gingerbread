@@ -14,6 +14,12 @@ class App extends Component {
       progress: 0,
       answers: []
     }
+
+    this.onSelect = this.onSelect.bind(this);
+  }
+
+  onSelect(answer) {
+    console.log(answer);
   }
   
   render() {
@@ -31,7 +37,8 @@ class App extends Component {
             1 of 5 answered
           </div>
 
-          <Question current={current} />
+          <Question current={current}
+            onSelect={this.onSelect} />
 
           <div className="results">
             <h1>Here are your answers:</h1>

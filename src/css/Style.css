@@ -69,9 +69,33 @@ img {
     margin: 30px 0 15px 0;
 }
 
-.btn-huge .is-selected {
+.btn-huge:hover,
+.btn-huge:focus {
+    background-color: #c5c1ce;
+}
+
+.is-highlighted {
     animation-name: highlight;
     animation-duration: 500ms;
+}
+
+.is-selected {
+    border-width: 2px;
+    padding: 5px 44px 5px 14px;
+    margin-right: 28px;
+    position: relative;
+    left: -1px;
+}
+
+.is-selected:after {
+    content: '✓';
+    position: absolute;
+    display: block;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: auto;
+    font-size: 30px;
 }
 
 .letter {
@@ -87,32 +111,6 @@ img {
     border-radius: 3px;
 }
 
-.btn-huge .is-selected {
-    border-width: 2px;
-    padding: 5px 44px 5px 14px;
-    margin-right: 28px;
-    position: relative;
-    left: -1px;
-}
-
-.btn-huge .is-selected:after {
-    content: '✓';
-    position: absolute;
-    display: block;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    left: auto;
-    font-size: 30px;
-}
-
-.btn-huge:hover,
-.btn-huge:active,
-.btn-huge:focus {
-    background-color: darken(#edecf0, 10);
-    outline: none;
-}
-
 .results {
     display: flex;
     justify-content: center;
@@ -125,20 +123,20 @@ img {
 
 @keyframes highlight {
     0% {
-        background-color: darken(#edecf0, 20);
-        border-color: lighten(#4b4668, 0);
+        background-color: #c5c1ce;
+        border-color: #4b4668;
     }
     33% {
-        background-color: darken(#edecf0, 0);
-        border-color: lighten(#4b4668, 40);
+        background-color: #edecf0;
+        border-color: #657696;
     }
     66% {
-        background-color: darken(#edecf0, 20);
-        border-color: lighten(#4b4668, 0);
+        background-color: #c5c1ce;
+        border-color: #4b4668;
     }
     100% {
-        background-color: darken(#edecf0, 0);
-        border-color: lighten(#4b4668, 40);
+        background-color: #edecf0;
+        border-color: #657696;
     }
 }
 
