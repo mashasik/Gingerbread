@@ -4,7 +4,13 @@ const Answers = ({questions, answers}) => {
   return (
     <div className="answers">
       <ol>
-        <li>What? <strong>Ans</strong></li>
+        {questions.map((quest, i) => {
+          return (
+            <li key={quest._id}>
+              {quest.question} <strong>{answers[i]}</strong>
+            </li>
+          );  
+        })}
       </ol>
     </div>
   );
