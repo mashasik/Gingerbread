@@ -7,7 +7,7 @@ class Button extends Component {
   }
 
   handleClick(e) {
-    this.button.classList.add('is-selected', 'is-highlighted');
+    this.button.classList.add('is-highlighted');
 
     setTimeout((e) => {
       this.props.onSelect(this.props.choice);

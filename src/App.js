@@ -13,7 +13,8 @@ class App extends Component {
       current: data.questions[0],
       progress: 0,
       answers: [],
-      loadNewQuestion: false
+      loadNewQuestion: false,
+      showResults: false
     }
 
     this.onSelect = this.onSelect.bind(this);
@@ -27,13 +28,30 @@ class App extends Component {
   }
 
   goToNextQuestion() {
+    const { progress, questions } = this.state;
+
     this.setState({
       loadNewQuestion: true
     })
+
+    setTimeout(() => {
+      if (progress < questions.length - 1) {
+        this.setState({
+          progress: progress + 1,
+          current: questions[progress + 1],
+          loadNewQuestion: false
+        })
+      } else {
+        this.setState({
+          loadNewQuestion: false,
+          showResults: true
+        })
+      }
+    }, 300)
   }
   
   render() {
-    const { current, loadNewQuestion } = this.state;
+    const { current, loadNewQuestion, showResults } = this.state;
 
     return (
       <Fragment>
@@ -47,10 +65,13 @@ class App extends Component {
           <div className="progress">
             1 of 5 answered
           </div>
-
-          <Question current={current}
-            onSelect={this.onSelect}
-            loadNewQuestion={loadNewQuestion} />
+          
+          {
+            !showResults && <Question
+              current={current}
+              onSelect={this.onSelect}
+              loadNewQuestion={loadNewQuestion} />
+          }
 
           <div className="results">
             <h1>Here are your answers:</h1>
