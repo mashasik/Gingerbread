@@ -26,6 +26,10 @@ img {
     transform: translateX(-50%);
 }
 
+li {
+    margin-bottom: 10px;
+}
+
 .content {
     background-color: #fff;
     padding: 20px;
@@ -102,14 +106,15 @@ img {
     visibility: hidden;
 }
 
+.answers {
+    font-size: 18px;
+    text-align: center;
+}
+
 .results {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-}
-
-.results h1 {
-    width: 100%;
+    flex-direction: column;
 }
 
 @keyframes highlight {

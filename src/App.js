@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import data from './data/Data';
 import Question from './components/Question';
+import Results from './components/Results';
 
 import './css/Style.css';
 
@@ -51,7 +52,7 @@ class App extends Component {
   }
   
   render() {
-    const { current, loadNewQuestion, showResults } = this.state;
+    const { current, loadNewQuestion, showResults, questions, answers } = this.state;
 
     return (
       <Fragment>
@@ -61,23 +62,20 @@ class App extends Component {
         </header>
 
         <article className={`content`}>
-
           <div className="progress">
             1 of 5 answered
           </div>
-          
           {
-            !showResults && <Question
+            !showResults ? <Question
               current={current}
               onSelect={this.onSelect}
-              loadNewQuestion={loadNewQuestion} />
+              loadNewQuestion={loadNewQuestion}
+            /> : <Results
+              loadNewQuestion={loadNewQuestion}
+              answers={answers}
+              questions={questions}
+            />
           }
-
-          <div className="results">
-            <h1>Here are your answers:</h1>
-            <button className="btn btn-dark">Submit</button>
-          </div>
-
         </article>
       </Fragment>
     );
