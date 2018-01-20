@@ -111,6 +111,17 @@ img {
     border-radius: 3px;
 }
 
+.fade-out {
+    transition: visibility 0.15s linear, opacity 0.15s linear;
+    opacity: 1;
+    visibility: visible;
+}
+
+.fade-out-active {
+    opacity: 0;
+    visibility: hidden;
+}
+
 .results {
     display: flex;
     justify-content: center;

@@ -12,23 +12,34 @@ class App extends Component {
       questions: data.questions,
       current: data.questions[0],
       progress: 0,
-      answers: []
+      answers: [],
+      loadNewQuestion: false
     }
 
     this.onSelect = this.onSelect.bind(this);
+    this.goToNextQuestion = this.goToNextQuestion.bind(this);
   }
 
   onSelect(answer) {
-    console.log(answer);
+    this.setState({
+      answers: [...this.state.answers, answer]
+    }, this.goToNextQuestion())
+  }
+
+  goToNextQuestion() {
+    this.setState({
+      loadNewQuestion: true
+    })
   }
   
   render() {
-    const { current } = this.state;
+    const { current, loadNewQuestion } = this.state;
 
     return (
       <Fragment>
         <header>
-          <img src="https://ihatetomatoes.net/react-tutorials/abc-quiz/images/plane.svg" />
+          <img className={`fade-out ${loadNewQuestion ? 'fade-out-active' : ''}`}
+            src="https://ihatetomatoes.net/react-tutorials/abc-quiz/images/plane.svg" />
         </header>
 
         <article className={`content`}>
@@ -38,7 +49,8 @@ class App extends Component {
           </div>
 
           <Question current={current}
-            onSelect={this.onSelect} />
+            onSelect={this.onSelect}
+            loadNewQuestion={loadNewQuestion} />
 
           <div className="results">
             <h1>Here are your answers:</h1>
