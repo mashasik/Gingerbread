@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react';
 import data from './data/Data';
 import Question from './components/Question';
 import Results from './components/Results';
+import Progress from './components/Progress';
 
 import './css/Style.css';
 
@@ -77,9 +78,7 @@ class App extends Component {
         </header>
 
         <article className={`content`}>
-          <div className="progress">
-            1 of 5 answered
-          </div>
+          <Progress total={questions.length} progress={answers.length} />
           {
             !showResults ? <Question
               current={current}
