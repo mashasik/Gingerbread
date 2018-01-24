@@ -114,6 +114,14 @@ li {
     flex-direction: column;
 }
 
+.success {
+    color: #2ECC40;
+}
+
+.danger {
+    color: #FF4136;
+}
+
 @keyframes highlight {
     0% {
         background-color: #c5c1ce;

@@ -15,11 +15,13 @@ class App extends Component {
       progress: 0,
       answers: [],
       loadNewQuestion: false,
-      showResults: false
+      showResults: false,
+      correctAnswers: null
     }
 
     this.onSelect = this.onSelect.bind(this);
     this.goToNextQuestion = this.goToNextQuestion.bind(this);
+    this.onLoadResults = this.onLoadResults.bind(this);
   }
 
   onSelect(answer) {
@@ -50,9 +52,22 @@ class App extends Component {
       }
     }, 300)
   }
+
+  onLoadResults() {
+    fetch('https://api.myjson.com/bins/zgpjb')
+      .then(response => response.json())
+      .then(parseJSON => {
+        const correctAnswers = parseJSON.correctAnswers;
+
+        this.setState({ correctAnswers })
+      })
+      .catch(error => {
+        console.log('Fail', error);
+      })
+  }
   
   render() {
-    const { current, loadNewQuestion, showResults, questions, answers } = this.state;
+    const { current, loadNewQuestion, showResults, questions, answers, correctAnswers } = this.state;
 
     return (
       <Fragment>
@@ -74,6 +89,8 @@ class App extends Component {
               loadNewQuestion={loadNewQuestion}
               answers={answers}
               questions={questions}
+              onLoadResults={this.onLoadResults}
+              correctAnswers={correctAnswers}
             />
           }
         </article>
