@@ -6,6 +6,7 @@ import Results from './components/Results';
 import Progress from './components/Progress';
 
 import './css/Style.css';
+import Truck from './images/truck.svg';
 
 class App extends Component {
   constructor(props) {
@@ -74,7 +75,7 @@ class App extends Component {
       <Fragment>
         <header>
           <img className={`fade-out ${loadNewQuestion ? 'fade-out-active' : ''}`}
-            src="https://ihatetomatoes.net/react-tutorials/abc-quiz/images/plane.svg" />
+            src={!showResults ? current.image : Truck} />
         </header>
 
         <article className={`content`}>
